@@ -1,18 +1,21 @@
-document.getElementById('personForm').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evita que el formulario se envíe
-    
-    // Obtener valores del formulario
-    var name = document.getElementById('name').value;
-    var age = document.getElementById('age').value;
+document.addEventListener('DOMContentLoaded', function() {
+    const teams = [
+        { name: 'Equipo A', goals: 5, wins: 2 },
+        { name: 'Equipo B', goals: 7, wins: 3 },
+        { name: 'Equipo C', goals: 4, wins: 1 },
+        { name: 'Equipo D', goals: 6, wins: 4 }
+    ];
 
-    // Crear un nuevo elemento de lista con los datos ingresados
-    var listItem = document.createElement('div');
-    listItem.textContent = name + ', ' + age + ' años';
+    const teamTableBody = document.getElementById('teamTableBody');
 
-    // Agregar el elemento de lista a la lista de personas
-    document.getElementById('personList').appendChild(listItem);
-
-    // Limpiar los campos del formulario
-    document.getElementById('name').value = '';
-    document.getElementById('age').value = '';
+    // Generar filas de la tabla con los datos de los equipos
+    teams.forEach(team => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${team.name}</td>
+            <td>${team.goals}</td>
+            <td>${team.wins}</td>
+        `;
+        teamTableBody.appendChild(row);
+    });
 });
